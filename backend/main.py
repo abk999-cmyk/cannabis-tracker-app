@@ -486,8 +486,13 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 8000))
     debug = os.getenv('FLASK_ENV', 'production') == 'development'
     
-    app.run(
-        host='0.0.0.0',
-        port=port,
-        debug=debug
-    )
+    if os.getenv('FLASK_ENV') == 'production':
+        # Production: Let Gunicorn handle this
+        logger.info("Running in production mode with Gunicorn")
+    else:
+        # Development: Use Flask's built-in server
+        app.run(
+            host='0.0.0.0',
+            port=port,
+            debug=debug
+        )

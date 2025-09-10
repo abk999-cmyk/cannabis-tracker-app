@@ -13,8 +13,11 @@ dist/
 .env.production
 
 # Logs
-logs/
+logs/*.log
 *.log
+
+# Keep logs directory but ignore log files
+!logs/.gitkeep
 
 # OS generated files
 .DS_Store

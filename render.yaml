@@ -2,15 +2,12 @@ services:
   # PostgreSQL Database
   - type: pserv
     name: cannabis-tracker-db
-    env: docker
     plan: free
-    databaseName: cannabis_tracker
-    user: cannabis_user
 
   # Backend Web Service  
   - type: web
     name: cannabis-tracker-backend
-    env: python3
+    runtime: python3
     plan: free
     buildCommand: pip install -r backend/requirements.txt
     startCommand: python backend/main.py
@@ -22,7 +19,7 @@ services:
       - key: PORT
         value: 10000
       - key: FRONTEND_URL
-        value: https://cannabis-tracker-app.vercel.app
+        value: https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app
       - key: DATABASE_URL
         fromDatabase:
           name: cannabis-tracker-db

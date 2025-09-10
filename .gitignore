@@ -51,3 +51,4 @@ pip-delete-this-directory.txt
 *.tmp
 *.temp
 .cache
+.vercel

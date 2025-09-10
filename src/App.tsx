@@ -323,6 +323,7 @@ const CannabisTracker = () => {
         clearTimeout(timeoutId);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated && authToken ? 'loaded' : 'not-loaded']);
 
   // Calculate stats from API data

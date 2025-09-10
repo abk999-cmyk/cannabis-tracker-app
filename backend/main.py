@@ -29,8 +29,10 @@ CORS(app, origins=[
     "http://localhost:5173", 
     "http://127.0.0.1:3000",
     "https://*.netlify.app",
-    "https://*.netlify.com",
-    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-app.netlify.app')
+    "https://*.netlify.com", 
+    "https://*.vercel.app",
+    "https://cannabis-tracker-app.vercel.app",
+    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-app.vercel.app')
 ])
 
 # JWT Configuration
@@ -39,13 +41,27 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt = JWTManager(app)
 
 # Database configuration
-DB_CONFIG = {
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'database': os.getenv('DB_NAME', 'cannabis_tracker'),
-    'user': os.getenv('DB_USER', os.getenv('USER', 'postgres')),
-    'password': os.getenv('DB_PASSWORD', ''),
-    'port': int(os.getenv('DB_PORT', '5432'))
-}
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    # Parse DATABASE_URL for Render/Heroku style connection
+    import urllib.parse
+    url = urllib.parse.urlparse(DATABASE_URL)
+    DB_CONFIG = {
+        'host': url.hostname,
+        'database': url.path[1:],
+        'user': url.username,
+        'password': url.password,
+        'port': url.port or 5432
+    }
+else:
+    # Local development configuration
+    DB_CONFIG = {
+        'host': os.getenv('DB_HOST', 'localhost'),
+        'database': os.getenv('DB_NAME', 'cannabis_tracker'),
+        'user': os.getenv('DB_USER', os.getenv('USER', 'postgres')),
+        'password': os.getenv('DB_PASSWORD', ''),
+        'port': int(os.getenv('DB_PORT', '5432'))
+    }
 
 def get_db_connection():
     """Get database connection"""

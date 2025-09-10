@@ -10,13 +10,20 @@ import uuid
 from decouple import config
 
 # Configure logging
+log_handlers = [logging.StreamHandler()]
+
+# Only add file handler if we can create the logs directory
+try:
+    log_dir = os.path.join(os.path.dirname(__file__), '../logs')
+    os.makedirs(log_dir, exist_ok=True)
+    log_handlers.append(logging.FileHandler(os.path.join(log_dir, 'backend.log')))
+except Exception as e:
+    print(f"Warning: Could not set up file logging: {e}")
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(os.path.join(os.path.dirname(__file__), '../logs/backend.log')),
-        logging.StreamHandler()
-    ]
+    handlers=log_handlers
 )
 
 logger = logging.getLogger(__name__)

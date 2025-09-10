@@ -39,8 +39,8 @@ CORS(app, origins=[
     "https://*.netlify.com", 
     "https://*.vercel.app",
     "https://cannabis-tracker-app.vercel.app",
-    "https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app",
-    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app')
+    "https://cannabis-tracker-frontend.onrender.com",
+    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-frontend.onrender.com')
 ])
 
 # JWT Configuration

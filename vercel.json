@@ -1,19 +1,35 @@
 {
+  "name": "cannabis-tracker-frontend",
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "api/index.py"
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "REACT_APP_API_URL": "https://cannabis-tracker-backend.onrender.com/api/v1"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "REACT_APP_API_URL": "https://cannabis-tracker-backend.onrender.com/api/v1"
+    }
+  }
 }

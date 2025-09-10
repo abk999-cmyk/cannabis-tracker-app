@@ -1,0 +1,26 @@
+app = "cannabis-tracker-backend"
+primary_region = "ord"
+
+[build]
+
+[env]
+  FLASK_ENV = "production"
+  JWT_SECRET_KEY = "oI4WuOz_wVv-ZpJlI__QtihZmuxZfgRAotehuIDtC-A"
+  FRONTEND_URL = "https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[[statics]]
+  guest_path = "/app/public"
+  url_prefix = "/static/"

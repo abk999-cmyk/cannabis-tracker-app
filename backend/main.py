@@ -39,7 +39,8 @@ CORS(app, origins=[
     "https://*.netlify.com", 
     "https://*.vercel.app",
     "https://cannabis-tracker-app.vercel.app",
-    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-app.vercel.app')
+    "https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app",
+    os.getenv('FRONTEND_URL', 'https://cannabis-tracker-frontend-v1nie6aw4-abhinavs-projects-8e429675.vercel.app')
 ])
 
 # JWT Configuration
@@ -493,13 +494,8 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 8000))
     debug = os.getenv('FLASK_ENV', 'production') == 'development'
     
-    if os.getenv('FLASK_ENV') == 'production':
-        # Production: Let Gunicorn handle this
-        logger.info("Running in production mode with Gunicorn")
-    else:
-        # Development: Use Flask's built-in server
-        app.run(
-            host='0.0.0.0',
-            port=port,
-            debug=debug
-        )
+    app.run(
+        host='0.0.0.0',
+        port=port,
+        debug=debug
+    )

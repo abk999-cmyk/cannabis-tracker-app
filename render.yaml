@@ -7,7 +7,7 @@ services:
   # Backend Web Service  
   - type: web
     name: cannabis-tracker-backend
-    runtime: python3
+    runtime: python
     plan: free
     buildCommand: pip install -r backend/requirements.txt
     startCommand: python backend/main.py

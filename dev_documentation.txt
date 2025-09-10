@@ -1,0 +1,28 @@
+## Cannabis Tracker Deployment - 2025-09-09 21:43
+
+**Objective:** Deploy the `cannabis-tracker-v2.tsx` React application.
+
+**Initial State:**
+- A single React component file `cannabis-tracker-v2.tsx` exists on the Desktop.
+- No `package.json` or project structure is present.
+
+**Actions Taken:**
+1.  **Project Initialization:**
+    - Created a `package.json` file with necessary dependencies for a Create React App project, including `react`, `react-dom`, `react-scripts`, `lucide-react`, and `recharts`.
+    - Added standard scripts for `start`, `build`, `test`, and `eject`.
+2.  **Configuration:**
+    - Created a `.gitignore` file to exclude `node_modules`, build artifacts, and environment files from version control.
+    - Created a `tailwind.config.js` to enable Tailwind CSS.
+    - Created a `netlify.toml` file to specify build commands for deployment.
+3.  **Documentation:**
+    - Created this `dev_documentation.txt` file to log the setup and deployment process.
+4.  **Project Structure:**
+    - Created `public` and `src` directories.
+    - Added a standard `public/index.html`.
+    - Moved `cannabis-tracker-v2.tsx` to `src/App.tsx`.
+    - Created `src/index.tsx`, `src/index.css`, and `src/reportWebVitals.ts` to complete the React app structure.
+5.  **Dependency Installation:**
+    - Ran `npm install` to download all project dependencies.
+6.  **Project Organization:**
+    - Created a `cannabis-tracker-app` directory.
+    - Moved all project files into the `cannabis-tracker-app` directory to resolve deployment pathing issues.

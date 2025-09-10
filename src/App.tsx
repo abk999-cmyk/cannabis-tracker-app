@@ -3,7 +3,7 @@ import { Calendar, TrendingUp, Brain, Activity, Hash, Flame, Cookie, Droplet, Wi
 import { LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Area, AreaChart } from 'recharts';
 
 // API base URL
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+import { API_BASE_URL } from './config';
 
 // Types
 interface User {
